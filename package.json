@@ -1,0 +1,24 @@
+{
+  "author": "Alex Simkovich",
+  "name": "weathermobile",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-autoprefixer": "*",
+    "grunt-browser-sync": "*",
+    "grunt-contrib-clean": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-cssmin": "*",
+    "grunt-contrib-imagemin": "*",
+    "grunt-contrib-less": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*",
+    "imagemin-gifsicle": "*",
+    "load-grunt-tasks": "*",
+    "time-grunt": "*"
+  }
+}
