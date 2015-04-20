@@ -53,10 +53,10 @@
         </div>
         <div class="weather-block_body">
           <h2 class="h2 text-center">Weather forecast</h2>
-          <ul class="weather-list_ul">
+          <ul class="weather-list_ul" ng-controller="forecastController">
             <li class="weather-list_li">
               <div class="weather-list_date">
-                Mon, Apr 20
+                {{time()}}
               </div>
               <div class="weather-list_temp">
                 <b>14°</b> / 8°
