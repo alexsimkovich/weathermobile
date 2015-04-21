@@ -12,13 +12,14 @@
       margin-bottom: 20px;
 
       .weather-block_city {
-        font-family: @font-roboto-slab;
         font-size: 2em;
         line-height: normal;
+        margin-bottom: 5px;
       }
       .weather-block_today {
         color: @color-default-light;
         font-size: 1.2em;
+        margin-bottom: 30px;
       }
 
       .weather-block_temp-today {
@@ -107,6 +108,8 @@
     }
 
     .weather-block_body {
+      padding: 0px 15px;
+
       ul.weather-list_ul {
         margin: 0;
         padding: 0;
@@ -131,7 +134,8 @@
             margin-right: 10px;
             font-size: 1.2em;
             color: #767676;
-            margin-right: 30px;
+            margin-right: 10px;
+            width: 65px;
 
             b {
               color: @color-dark;
@@ -153,11 +157,49 @@
             .weather-list_txt {
               font-size: 1.2em;
               display: inline-block;
+              text-transform: capitalize;
             }
           }
 
           &:last-child {
             border-bottom: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .weather {
+    .weather-block {
+      .weather-block_header {
+        .weather-block_time {
+          .time_sunset,
+          .time_sunrise {
+            margin: 0;
+          }
+        }
+      }
+      .weather-block_body {
+        ul.weather-list_ul {
+          .weather-list_li {
+            .weather-list_temp {
+              font-size: 1.4em;
+              width: 85px;
+              margin-right: 5px;
+            }
+            .weather-list_desc {
+              .weather-list_txt {
+                font-size: 1.4em;
+              }
+            }
           }
         }
       }
