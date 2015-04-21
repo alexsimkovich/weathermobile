@@ -11,8 +11,8 @@ weatherApp.controller('forecastController', function ($scope, $http) {
     $scope.sendPosition = function (position) {
         $scope.lat = position.coords.latitude;
         $scope.lon = position.coords.longitude;
-
-        $http.get('http://api.openweathermap.org/data/2.5/weather?lat=' + $scope.lat + '&lon=' + $scope.lon + '&APPID=7b94b6edc475a0bb2bee8da350a7fcf2').success(function (data) {
+        var url1 = 'http://api.openweathermap.org/data/2.5/weather?lat=' + $scope.lat + '&lon=' + $scope.lon + '&mode=json&callback=JSON_CALLBACK';
+        $http.jsonp(url1).success(function (data) {
             $scope.city = data.name;
 
             var date1 = new Date(data.sys.sunrise * 1000);
@@ -26,8 +26,8 @@ weatherApp.controller('forecastController', function ($scope, $http) {
             $scope.sunrise = sunriseTime;
             $scope.sunset = sunsetTime;
         });
-
-        $http.get('http://api.openweathermap.org/data/2.5/forecast/daily?lat='+ $scope.lat +'&lon='+ $scope.lon +'&cnt=7&mode=json&APPID=7b94b6edc475a0bb2bee8da350a7fcf2').success(function (response) {
+        var url2 = 'http://api.openweathermap.org/data/2.5/forecast/daily?lat='+ $scope.lat +'&lon='+ $scope.lon +'&cnt=7&mode=json&callback=JSON_CALLBACK';
+        $http.jsonp(url2).success(function (response) {
             $scope.weatherList = response.list;
             $scope.temp_min = response.list[0].temp.min;
             $scope.temp_max = response.list[0].temp.max;
