@@ -57,40 +57,40 @@
     <div class="container">
       <div class="weather-block" ng-controller="forecastController">
         <div class="weather-block_header">
-          <div class="weather-block_city">{{city}}</div>
+          <div class="weather-block_city">{{rsp[0].name}}</div>
           <div class="weather-block_today">Today</div>
           <div class="weather-block_temp-today">
             <span class="temp-today_max">
-              <b>{{temp_max - 273.15 | number:0}}</b><i>°</i>
+              <b>{{forecastRsp[0].temp.max - 273.15 | number:0}}</b><i>°</i>
             </span>
             <span class="temp-today_min">
-              / <b>{{temp_min - 273.15 | number:0}}</b><i>°</i>
+              / <b>{{forecastRsp[0].temp.min - 273.15 | number:0}}</b><i>°</i>
             </span>
           </div>
           <div class="weather-block_desc">
             <div class="weather-block_icon">
-              <i rel="{{id}}" class="wi wi-{{icon}}"></i>
+              <i rel="{{forecastRsp[0].weather[0].id}}" class="wi wi-{{forecastRsp[0].weather[0].icon}}"></i>
             </div>
             <div class="weather-block_txt">
-              <div class="weather-block_h">{{mainweather}}</div>
-              <div class="weather-block_info">{{weatherdesc}}</div>
+              <div class="weather-block_h">{{forecastRsp[0].weather[0].main}}</div>
+              <div class="weather-block_info">{{forecastRsp[0].weather[0].description}}</div>
             </div>
           </div>
           <div class="weather-block_time">
             <div class="time_sunrise">
               Sunrise at
-              <span>{{sunrise}}</span>
+              <span>{{dailyRsp.sys.sunrise * 1000 | date:'HH:mm'}}</span>
             </div>
             <div class="time_sunset">
               Sunset at
-              <span>{{sunset}}</span>
+              <span>{{dailyRsp.sys.sunset * 1000 | date:'HH:mm'}}</span>
             </div>
           </div>
         </div>
         <div class="weather-block_body">
           <h2 class="h2 text-center">Weather forecast</h2>
           <ul class="weather-list_ul">
-            <li class="weather-list_li" ng-repeat="data in weatherList | limitTo: 7" ng-show="!$first">
+            <li class="weather-list_li" ng-repeat="data in forecastRsp | limitTo: 7" ng-show="!$first">
               <div class="weather-list_date">
                 {{data.dt * 1000 | date:'EEE, MMM dd'}}
               </div>
@@ -122,6 +122,7 @@
 </footer>
 <script src="assets/js/lib/jquery.js"></script>
 <script src="assets/js/lib/angular.js"></script>
+<script src="assets/js/lib/angular-resource.js"></script>
 <script src="app/app.js"></script>
 <!--<script src="app/services/services.js"></script>-->
 <script src="app/controller/controller.js"></script>
