@@ -11,8 +11,9 @@ weatherApp.controller('forecastController', function ($scope, $http) {
     $scope.sendPosition = function (position) {
         $scope.lat = position.coords.latitude;
         $scope.lon = position.coords.longitude;
-        var url1 = 'http://api.openweathermap.org/data/2.5/weather?lat=' + $scope.lat + '&lon=' + $scope.lon + '&mode=json&callback=JSON_CALLBACK';
+        var url1 = 'https://api.forecast.io/forecast/fc1cdc0262c76a0691d8c292d5c91b49/'+$scope.lat+','+$scope.lon+'&callback=JSON_CALLBACK';
         $http.jsonp(url1).success(function (data) {
+            console.log(data);
             $scope.city = data.name;
 
             var date1 = new Date(data.sys.sunrise * 1000);
