@@ -61,11 +61,20 @@ weatherApp.controller('chartController', ['$scope','$http','$filter', function (
 
             $scope.labels = labels;
             $scope.data = [data];
-            $scope.colours = 'Red';
             $scope.series = ['Hourly temperature'];
             $scope.options = {
-                scaleShowGridLines: false
-            };
+                scaleGridLineWidth : 0,
+                scaleShowGridLines : false,
+                scaleGridLineColor : "rgba(0,0,0,.6)",
+                //Boolean - Whether to show horizontal lines (except X axis)
+                scaleShowHorizontalLines: false,
+
+                //Boolean - Whether to show vertical lines (except Y axis)
+                scaleShowVerticalLines: false
+                };
+            console.log($scope.options);
+
+
 
             Chart.defaults.global.scaleFontColor = "#fff";
             Chart.defaults.global.responsive = true;
@@ -73,7 +82,6 @@ weatherApp.controller('chartController', ['$scope','$http','$filter', function (
             Chart.defaults.global.tooltipTitleFontFamily = "'Roboto', sans-serif";
             Chart.defaults.global.scaleLineColor = "rgba(255,255,255,.9)";
             Chart.defaults.global.colours[0] = "#FFFFFF";
-            console.log(Chart.defaults.global.colours);
         });
     };
 

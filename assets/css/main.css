@@ -10440,6 +10440,9 @@ body {
 .weather .weather-block .weather-block_header .weather-block_time .time_sunset span {
   font-weight: 500;
 }
+.weather .weather-block .weather-block_header .weather-block_chart {
+  margin: 50px 0 0;
+}
 .weather .weather-block .weather-block_body {
   padding: 0px 15px;
 }
