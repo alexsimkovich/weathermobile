@@ -86,6 +86,12 @@
               <span>{{dailyRsp.sys.sunset * 1000 | date:'HH:mm'}}</span>
             </div>
           </div>
+          <div class="test-block" ng-controller="chartController">
+            Test data:
+            <div>
+              <canvas id="line" class="chart chart-line" data="data" series="series" labels="labels" legend="true" colors="Red"></canvas>
+            </div>
+          </div>
         </div>
         <div class="weather-block_body">
           <h2 class="h2 text-center">Weather forecast</h2>
@@ -123,6 +129,8 @@
 <script src="assets/js/lib/jquery.js"></script>
 <script src="assets/js/lib/angular.js"></script>
 <script src="assets/js/lib/angular-resource.js"></script>
+<script src="assets/js/lib/Chart.js"></script>
+<script src="assets/js/lib/angular-chart.js"></script>
 <script src="app/app.js"></script>
 <!--<script src="app/services/services.js"></script>-->
 <script src="app/controller/controller.js"></script>
