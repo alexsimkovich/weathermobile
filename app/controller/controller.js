@@ -1,5 +1,6 @@
 weatherApp.controller('forecastController', function ($scope, $http) {
     weatherList = [];
+    $scope.appID = '7b94b6edc475a0bb2bee8da350a7fcf2';
     $scope.getPosition = function () {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition($scope.sendPosition);
@@ -12,17 +13,17 @@ weatherApp.controller('forecastController', function ($scope, $http) {
         $scope.lat = position.coords.latitude;
         $scope.lon = position.coords.longitude;
 
-        var cityUrl = 'http://api.openweathermap.org/data/2.5/find?lat=' + $scope.lat + '&lon=' + $scope.lon + '&cnt=5&callback=JSON_CALLBACK';
+        var cityUrl = 'http://api.openweathermap.org/data/2.5/find?lat=' + $scope.lat + '&lon=' + $scope.lon + '&appid='+ $scope.appID +'&cnt=5&callback=JSON_CALLBACK';
         $http.jsonp(cityUrl).success(function (rsp) {
             $scope.rsp = rsp.list;
         });
 
-        var dailyUrl = 'http://api.openweathermap.org/data/2.5/weather?lat=' + $scope.lat + '&lon=' + $scope.lon + '&mode=json&callback=JSON_CALLBACK';
+        var dailyUrl = 'http://api.openweathermap.org/data/2.5/weather?lat=' + $scope.lat + '&lon=' + $scope.lon + '&appid='+ $scope.appID +'&mode=json&callback=JSON_CALLBACK';
         $http.jsonp(dailyUrl).success(function (data) {
             $scope.dailyRsp = data;
         });
 
-        var forecastUrl = 'http://api.openweathermap.org/data/2.5/forecast/daily?lat='+ $scope.lat +'&lon='+ $scope.lon +'&cnt=7&mode=json&callback=JSON_CALLBACK';
+        var forecastUrl = 'http://api.openweathermap.org/data/2.5/forecast/daily?lat='+ $scope.lat +'&lon='+ $scope.lon +'&appid='+ $scope.appID +'&cnt=7&mode=json&callback=JSON_CALLBACK';
         $http.jsonp(forecastUrl).success(function (response) {
             $scope.forecastRsp = response.list;
         });
@@ -47,7 +48,6 @@ weatherApp.controller('chartController', ['$scope','$http','$filter', function (
         var hourlyUrl = 'https://api.forecast.io/forecast/fc1cdc0262c76a0691d8c292d5c91b49/' + $scope.lat + ',' + $scope.lon + '?callback=JSON_CALLBACK';
         $http.jsonp(hourlyUrl).success(function (hourdata) {
             $scope.hourdata = hourdata.hourly.data;
-            //console.log($scope.hourdata);
 
             var labels = [];
             var data = [];
@@ -72,9 +72,6 @@ weatherApp.controller('chartController', ['$scope','$http','$filter', function (
                 //Boolean - Whether to show vertical lines (except Y axis)
                 scaleShowVerticalLines: false
                 };
-            console.log($scope.options);
-
-
 
             Chart.defaults.global.scaleFontColor = "#fff";
             Chart.defaults.global.responsive = true;
